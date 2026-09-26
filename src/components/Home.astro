@@ -1,0 +1,117 @@
+---
+import { t, operator, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = t(lang);
+
+const copy = {
+  en: {
+    stepsTitle: 'How it works',
+    steps: [
+      {
+        title: 'Hosts connect their calendars',
+        body: 'Each Host signs in with Google. Kairos reads only free/busy time — never what your events say.',
+      },
+      {
+        title: 'Hosts offer the times they want',
+        body: 'Being free is not the same as wanting to meet. Every Host says yes to specific Slots, once or as a weekly Standing Offer.',
+      },
+      {
+        title: 'Guests book what everyone agreed',
+        body: 'A Slot opens only when every Host has offered it and nobody is busy. The Guest picks one from a private link and the event lands in every Host’s calendar.',
+      },
+    ],
+    neverTitle: 'What Kairos never does',
+    never: [
+      'Read the titles, descriptions or attendees of your calendar events.',
+      'Offer a time on your behalf — suggestions stay suggestions until you accept them.',
+      'Show a Guest your calendar — they see Open Slots, never your Busy time or why.',
+      'Track visitors, sell data or use it to train models.',
+    ],
+    statusTitle: 'Where it stands',
+    status:
+      'Kairos is in daily use by one team and is being prepared for release as open-source software (AGPL), so any group can run its own copy. Sign-in is by invitation for now.',
+    cta: 'Questions? Write to',
+  },
+  es: {
+    stepsTitle: 'Cómo funciona',
+    steps: [
+      {
+        title: 'Los anfitriones conectan sus calendarios',
+        body: 'Cada anfitrión inicia sesión con Google. Kairos solo lee los tramos libres y ocupados; nunca lo que dicen tus eventos.',
+      },
+      {
+        title: 'Los anfitriones ofrecen los horarios que quieren',
+        body: 'Estar libre no es lo mismo que querer quedar. Cada anfitrión acepta huecos concretos, una vez o como oferta fija semanal.',
+      },
+      {
+        title: 'El invitado reserva lo que todos acordaron',
+        body: 'Un hueco solo se abre cuando todos los anfitriones lo han ofrecido y nadie está ocupado. El invitado elige uno desde un enlace privado y el evento aparece en el calendario de cada anfitrión.',
+      },
+    ],
+    neverTitle: 'Lo que Kairos nunca hace',
+    never: [
+      'Leer los títulos, descripciones o asistentes de tus eventos.',
+      'Ofrecer un horario en tu nombre: las sugerencias siguen siéndolo hasta que las aceptas.',
+      'Enseñar tu calendario al invitado: ve los huecos abiertos, nunca cuándo estás ocupado ni por qué.',
+      'Rastrear visitantes, vender datos ni usarlos para entrenar modelos.',
+    ],
+    statusTitle: 'En qué punto está',
+    status:
+      'Kairos lo usa a diario un equipo y se está preparando para publicarse como software libre (AGPL), para que cualquier grupo pueda tener su propia copia. De momento, el acceso es por invitación.',
+    cta: '¿Dudas? Escribe a',
+  },
+}[lang];
+
+---
+
+<section class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-24 md:grid-cols-[1.4fr_1fr]">
+  <div>
+    <h1 class="text-4xl leading-tight font-semibold sm:text-5xl">{s.tagline}</h1>
+    <p class="mt-6 max-w-xl text-lg text-muted">{s.description}</p>
+  </div>
+  <img
+    src="/icon-512.png"
+    alt={lang === 'en' ? 'Kairos logo: a winged figure holding an hourglass' : 'Logotipo de Kairos: una figura alada que sostiene un reloj de arena'}
+    width="512"
+    height="512"
+    class="mx-auto w-56 drop-shadow-xl sm:w-72"
+  />
+</section>
+
+<section class="border-y border-line bg-surface">
+  <div class="mx-auto max-w-5xl px-5 py-16">
+    <h2 class="text-3xl font-semibold">{copy.stepsTitle}</h2>
+    <ol class="mt-8 grid gap-8 md:grid-cols-3">
+      {
+        copy.steps.map((step, i) => (
+          <li>
+            <span class="font-serif text-4xl text-terra">{i + 1}</span>
+            <h3 class="mt-2 text-xl font-semibold">{step.title}</h3>
+            <p class="mt-2 text-muted">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="mx-auto grid max-w-5xl gap-12 px-5 py-16 md:grid-cols-2">
+  <div>
+    <h2 class="text-3xl font-semibold">{copy.neverTitle}</h2>
+    <ul class="mt-6 space-y-3">
+      {copy.never.map((item) => <li class="border-l-2 border-terra pl-4">{item}</li>)}
+    </ul>
+  </div>
+  <div>
+    <h2 class="text-3xl font-semibold">{copy.statusTitle}</h2>
+    <p class="mt-6 text-muted">{copy.status}</p>
+    <p class="mt-4">
+      {copy.cta} <a href={`mailto:${operator.email}`}>{operator.email}</a>.
+    </p>
+  </div>
+</section>
