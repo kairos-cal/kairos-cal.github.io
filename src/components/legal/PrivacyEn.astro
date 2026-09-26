@@ -1,0 +1,161 @@
+---
+import { operator } from '../../i18n';
+---
+
+<p>
+  This policy explains what personal data Kairos handles, why, for how long, and what you can do
+  about it. It covers the Kairos service at <a href={operator.appUrl}>{operator.appUrl.replace('https://', '')}</a>
+  and this website. Kairos is open-source software: a copy that someone else runs on their own
+  server is their responsibility, not covered here.
+</p>
+
+<h2>Who is responsible</h2>
+<p>
+  The data controller is <strong>{operator.name}</strong>, an individual based in Spain, who runs
+  Kairos free of charge. Contact for anything in this policy:
+  {' '}<a href={`mailto:${operator.email}`}>{operator.email}</a>.
+</p>
+
+<h2>Who this is about</h2>
+<ul>
+  <li><strong>Hosts</strong> — people who sign in with Google, connect their calendars and offer times.</li>
+  <li><strong>Guests</strong> — people who open a Booking Link and book a Session. Guests never sign in.</li>
+  <li><strong>Visitors</strong> to this website.</li>
+</ul>
+
+<h2>What we collect and why</h2>
+
+<h3>Hosts</h3>
+<table>
+  <thead><tr><th>Data</th><th>Why</th><th>Legal basis</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Google account email address, name and time zone</td>
+      <td>To identify you, check that you were invited, and show times in your zone</td>
+      <td rowspan="4">Performance of the service you asked for (GDPR art. 6(1)(b))</td>
+    </tr>
+    <tr>
+      <td>Google OAuth tokens (stored encrypted)</td>
+      <td>To keep reading your free/busy time and writing Session events without asking you to sign in every time</td>
+    </tr>
+    <tr>
+      <td>Names of your calendars</td>
+      <td>So you can choose which calendars count as busy and which one receives Session events</td>
+    </tr>
+    <tr>
+      <td>Your Offers, Standing Offers and settings; daily counts (Tallies) of Slots offered, vetoed, opened and booked</td>
+      <td>To find times every Host agreed to, and to show the team its own statistics</td>
+    </tr>
+    <tr>
+      <td>An audit log of sign-ins and changes (who, what, when)</td>
+      <td>Security and troubleshooting</td>
+      <td>Legitimate interest in keeping the service secure (art. 6(1)(f))</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Guests</h3>
+<table>
+  <thead><tr><th>Data</th><th>Why</th><th>Legal basis</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>The Intake you submit: name, email, topic, short bio, social handles, time zone and language</td>
+      <td>To book the Session you asked for, tell the Hosts who you are and what you will talk about, and send you the calendar invitation</td>
+      <td>Steps taken at your request to arrange the Session (art. 6(1)(b))</td>
+    </tr>
+    <tr>
+      <td>The Session's time and state, and a random Manage Token</td>
+      <td>So you can cancel or reschedule from your confirmation link</td>
+      <td>Same as above</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Everyone</h3>
+<p>
+  Your IP address is used in memory to limit abusive request rates and is not stored by Kairos.
+  Request logs record the method, the path (with Booking Link and Manage Token removed), the
+  status and the time taken — no IP addresses, no personal data. Our hosting providers may keep
+  short-lived network logs for security.
+</p>
+
+<h2>Google user data</h2>
+<p>Kairos asks Google for the smallest set of permissions it needs:</p>
+<ul>
+  <li><strong>Your email and basic profile</strong> — to sign you in.</li>
+  <li><strong>Free/busy information</strong> (<code>calendar.freebusy</code>) — to know when you are busy. Kairos sees <em>that</em> you are busy, never the title, description, location or attendees of any event.</li>
+  <li><strong>Calendar list</strong> (<code>calendar.calendarlist.readonly</code>) — the names of your calendars, so you can pick which ones count.</li>
+  <li><strong>Events</strong> (<code>calendar.events</code>) — used only to create the event for a booked Session in the calendar you chose, and to delete that same event if the Guest cancels or reschedules. Kairos does not read, change or delete any other event.</li>
+</ul>
+<p>
+  Free/busy answers are used on the spot to compute Open Slots and are not stored. Google data is
+  never sold, never used for advertising, never used to train AI or machine-learning models, and
+  never read by a human except with your permission, for security, or to comply with the law.
+</p>
+<blockquote>
+  Kairos's use and transfer to any other app of information received from Google APIs will adhere
+  to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API
+  Services User Data Policy</a>, including the Limited Use requirements.
+</blockquote>
+<p>
+  You can revoke Kairos's access at any time from
+  {' '}<a href="https://myaccount.google.com/connections">your Google account's third-party connections</a>;
+  Kairos then stops reading your calendars immediately.
+</p>
+
+<h2>Who else receives data</h2>
+<ul>
+  <li><strong>Google</strong> (Google Calendar) — the Session event is written into each Host's calendar with the Guest as an attendee, and Google sends the invitation. From then on the event lives in those Google accounts under Google's own terms.</li>
+  <li><strong>The Team's Hosts</strong> — see the Guest's Intake to prepare the Session.</li>
+  <li><strong>IONOS SE</strong> (Germany) — hosts the server Kairos runs on, in the EU.</li>
+  <li><strong>Cloudflare, Inc.</strong> — stores encrypted off-site backups of the server.</li>
+  <li><strong>GitHub, Inc.</strong> — hosts this website (not the Kairos service).</li>
+</ul>
+<p>
+  Google, Cloudflare and GitHub are US companies. Where data leaves the EU it is covered by the
+  EU–US Data Privacy Framework or the European Commission's standard contractual clauses. Nobody
+  else receives your data, and none of it is sold.
+</p>
+
+<h2>How long we keep it</h2>
+<ul>
+  <li><strong>Guest Intake</strong>: anonymised <strong>24 months after the Session</strong>. Name, email, topic, bio, social handles and the Manage Token are erased, as are the audit-log lines that name the Guest; only the Session's date, length and state remain, for the team's statistics. A cancelled booking is treated the same way.</li>
+  <li><strong>Host data</strong>: for as long as you are a Host. When you leave, or ask us to, your account, tokens and Offers are deleted; the team's aggregate counts may remain without your name.</li>
+  <li><strong>Offers</strong>: removed once the day they refer to has passed; only the day's counts (Tally) are kept.</li>
+  <li><strong>Sign-in sessions</strong>: deleted when they expire.</li>
+  <li><strong>Backups</strong>: overwritten on a rolling basis; deleted data disappears from them within the backup retention period.</li>
+</ul>
+
+<h2>Your rights</h2>
+<p>
+  You can ask to access, correct, erase or export your data, to restrict or object to its
+  processing, by writing to <a href={`mailto:${operator.email}`}>{operator.email}</a>. We answer
+  within one month. A Guest can also cancel their booking at any time from their confirmation
+  link. If you think your data has been mishandled, you can complain to the Spanish data
+  protection authority, the <a href="https://www.aepd.es">Agencia Española de Protección de Datos</a>.
+</p>
+
+<h2>Cookies</h2>
+<p>
+  This website sets no cookies and loads nothing from third parties. The Kairos service sets two
+  strictly necessary cookies for Hosts — one keeps you signed in, one protects the Google sign-in
+  from forgery — and stores your light/dark preference in your browser. There are no analytics,
+  advertising or tracking cookies.
+</p>
+
+<h2>Security</h2>
+<p>
+  Traffic is encrypted with HTTPS. Google tokens are encrypted at rest. Booking and confirmation
+  links carry unguessable random identifiers and are removed from logs. Access to the server is
+  limited to the operator.
+</p>
+
+<h2>Children</h2>
+<p>Kairos is not meant for anyone under 14, and we do not knowingly collect their data.</p>
+
+<h2>Changes</h2>
+<p>
+  If this policy changes in a way that matters, the date below changes and Hosts are told by
+  email beforehand. The history of this page is public in the
+  {' '}<a href="https://github.com/kairos-cal/kairos-cal.github.io">website's repository</a>.
+</p>

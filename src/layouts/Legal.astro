@@ -1,0 +1,22 @@
+---
+import Base from './Base.astro';
+import { t, formatDate, legalUpdated, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  page: 'privacy' | 'terms';
+  title: string;
+}
+
+const { lang, page, title } = Astro.props;
+---
+
+<Base lang={lang} page={page} title={title}>
+  <article class="mx-auto max-w-5xl px-5 py-14">
+    <h1 class="text-4xl font-semibold">{title}</h1>
+    <p class="mt-3 text-sm text-muted">{t(lang).updated}: <time datetime={legalUpdated}>{formatDate(lang, legalUpdated)}</time></p>
+    <div class="prose-legal mt-8">
+      <slot />
+    </div>
+  </article>
+</Base>

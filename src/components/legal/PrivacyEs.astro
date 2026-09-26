@@ -1,0 +1,166 @@
+---
+import { operator } from '../../i18n';
+---
+
+<p>
+  Esta política explica qué datos personales trata Kairos, para qué, durante cuánto tiempo y qué
+  puedes hacer al respecto. Cubre el servicio Kairos en
+  {' '}<a href={operator.appUrl}>{operator.appUrl.replace('https://', '')}</a> y este sitio web. Kairos
+  es software libre: una copia que otra persona ejecute en su propio servidor es responsabilidad
+  suya y no está cubierta aquí.
+</p>
+
+<h2>Responsable del tratamiento</h2>
+<p>
+  El responsable es <strong>{operator.name}</strong>, persona física residente en España, que
+  ofrece Kairos de forma gratuita. Contacto para cualquier cuestión de esta política:
+  {' '}<a href={`mailto:${operator.email}`}>{operator.email}</a>.
+</p>
+
+<h2>A quién afecta</h2>
+<ul>
+  <li><strong>Anfitriones</strong>: personas que inician sesión con Google, conectan sus calendarios y ofrecen horarios.</li>
+  <li><strong>Invitados</strong>: personas que abren un enlace de reserva y reservan una sesión. Los invitados nunca inician sesión.</li>
+  <li><strong>Visitantes</strong> de este sitio web.</li>
+</ul>
+
+<h2>Qué datos tratamos y para qué</h2>
+
+<h3>Anfitriones</h3>
+<table>
+  <thead><tr><th>Datos</th><th>Finalidad</th><th>Base jurídica</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Correo, nombre y zona horaria de tu cuenta de Google</td>
+      <td>Identificarte, comprobar que has sido invitado y mostrarte los horarios en tu zona</td>
+      <td rowspan="4">Prestación del servicio que has solicitado (art. 6.1.b RGPD)</td>
+    </tr>
+    <tr>
+      <td>Tokens OAuth de Google (guardados cifrados)</td>
+      <td>Seguir leyendo tus tramos libres/ocupados y escribir los eventos de las sesiones sin pedirte que inicies sesión cada vez</td>
+    </tr>
+    <tr>
+      <td>Nombres de tus calendarios</td>
+      <td>Que elijas qué calendarios cuentan como ocupado y cuál recibe los eventos de las sesiones</td>
+    </tr>
+    <tr>
+      <td>Tus ofertas, ofertas fijas y ajustes; recuentos diarios (Tallies) de huecos ofrecidos, vetados, abiertos y reservados</td>
+      <td>Encontrar horarios que todos los anfitriones aceptan y mostrar al equipo sus propias estadísticas</td>
+    </tr>
+    <tr>
+      <td>Un registro de auditoría de inicios de sesión y cambios (quién, qué, cuándo)</td>
+      <td>Seguridad y resolución de problemas</td>
+      <td>Interés legítimo en mantener el servicio seguro (art. 6.1.f)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Invitados</h3>
+<table>
+  <thead><tr><th>Datos</th><th>Finalidad</th><th>Base jurídica</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Los datos que envías al reservar: nombre, correo, tema, biografía breve, redes sociales, zona horaria e idioma</td>
+      <td>Reservar la sesión que pides, contar a los anfitriones quién eres y de qué hablaréis, y enviarte la invitación de calendario</td>
+      <td>Medidas adoptadas a petición tuya para organizar la sesión (art. 6.1.b)</td>
+    </tr>
+    <tr>
+      <td>La fecha y el estado de la sesión, y un token de gestión aleatorio</td>
+      <td>Que puedas cancelar o cambiar la reserva desde tu enlace de confirmación</td>
+      <td>La misma</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Todos</h3>
+<p>
+  Tu dirección IP se usa en memoria para limitar peticiones abusivas y Kairos no la guarda. Los
+  registros de peticiones anotan el método, la ruta (sin el enlace de reserva ni el token de
+  gestión), el resultado y el tiempo de respuesta: ni direcciones IP ni datos personales. Nuestros
+  proveedores de alojamiento pueden conservar registros de red de corta duración por seguridad.
+</p>
+
+<h2>Datos de usuario de Google</h2>
+<p>Kairos pide a Google el mínimo de permisos que necesita:</p>
+<ul>
+  <li><strong>Tu correo y perfil básico</strong>: para iniciar sesión.</li>
+  <li><strong>Información libre/ocupado</strong> (<code>calendar.freebusy</code>): para saber cuándo estás ocupado. Kairos ve <em>que</em> estás ocupado, nunca el título, la descripción, el lugar ni los asistentes de ningún evento.</li>
+  <li><strong>Lista de calendarios</strong> (<code>calendar.calendarlist.readonly</code>): los nombres de tus calendarios, para que elijas cuáles cuentan.</li>
+  <li><strong>Eventos</strong> (<code>calendar.events</code>): solo para crear el evento de una sesión reservada en el calendario que elegiste, y para borrar ese mismo evento si el invitado cancela o cambia la reserva. Kairos no lee, modifica ni borra ningún otro evento.</li>
+</ul>
+<p>
+  Las respuestas de libre/ocupado se usan al momento para calcular los huecos abiertos y no se
+  guardan. Los datos de Google nunca se venden, nunca se usan para publicidad, nunca se usan para
+  entrenar modelos de inteligencia artificial o aprendizaje automático y nunca los lee una persona
+  salvo con tu permiso, por seguridad o para cumplir la ley.
+</p>
+<blockquote>
+  El uso que Kairos haga de la información recibida de las API de Google, y su transferencia a
+  cualquier otra aplicación, se ajustará a la
+  {' '}<a href="https://developers.google.com/terms/api-services-user-data-policy">Política de datos de
+  usuario de los servicios de API de Google</a>, incluidos los requisitos de uso limitado
+  (<em>Limited Use</em>).
+</blockquote>
+<p>
+  Puedes retirar el acceso de Kairos en cualquier momento desde
+  {' '}<a href="https://myaccount.google.com/connections">las conexiones con terceros de tu cuenta de Google</a>;
+  Kairos deja de leer tus calendarios en ese instante.
+</p>
+
+<h2>Quién más recibe datos</h2>
+<ul>
+  <li><strong>Google</strong> (Google Calendar): el evento de la sesión se escribe en el calendario de cada anfitrión con el invitado como asistente, y Google envía la invitación. A partir de ahí el evento vive en esas cuentas de Google bajo las condiciones de Google.</li>
+  <li><strong>Los anfitriones del equipo</strong>: ven los datos del invitado para preparar la sesión.</li>
+  <li><strong>IONOS SE</strong> (Alemania): aloja el servidor de Kairos, en la UE.</li>
+  <li><strong>Cloudflare, Inc.</strong>: guarda copias de seguridad cifradas fuera del servidor.</li>
+  <li><strong>GitHub, Inc.</strong>: aloja este sitio web (no el servicio Kairos).</li>
+</ul>
+<p>
+  Google, Cloudflare y GitHub son empresas estadounidenses. Cuando los datos salen de la UE, lo hacen
+  al amparo del Marco de Privacidad de Datos UE-EE. UU. o de las cláusulas contractuales tipo de la
+  Comisión Europea. Nadie más recibe tus datos y ninguno se vende.
+</p>
+
+<h2>Cuánto tiempo los conservamos</h2>
+<ul>
+  <li><strong>Datos del invitado</strong>: se anonimizan <strong>24 meses después de la sesión</strong>. Se borran el nombre, el correo, el tema, la biografía, las redes y el token de gestión, así como las líneas del registro de auditoría que nombran al invitado; solo quedan la fecha, la duración y el estado de la sesión, para las estadísticas del equipo. Una reserva cancelada recibe el mismo trato.</li>
+  <li><strong>Datos del anfitrión</strong>: mientras seas anfitrión. Cuando lo dejes, o si nos lo pides, se borran tu cuenta, tus tokens y tus ofertas; los recuentos agregados del equipo pueden quedar sin tu nombre.</li>
+  <li><strong>Ofertas</strong>: se eliminan cuando pasa el día al que se refieren; solo se conservan los recuentos del día (Tally).</li>
+  <li><strong>Sesiones de inicio</strong>: se borran al caducar.</li>
+  <li><strong>Copias de seguridad</strong>: se sobrescriben de forma rotatoria; los datos borrados desaparecen de ellas dentro del periodo de retención de las copias.</li>
+</ul>
+
+<h2>Tus derechos</h2>
+<p>
+  Puedes pedir el acceso, la rectificación, la supresión o la portabilidad de tus datos, y la
+  limitación u oposición a su tratamiento, escribiendo a
+  {' '}<a href={`mailto:${operator.email}`}>{operator.email}</a>. Respondemos en el plazo de un mes. Un
+  invitado también puede cancelar su reserva en cualquier momento desde su enlace de confirmación.
+  Si crees que tus datos no se han tratado correctamente, puedes reclamar ante la
+  {' '}<a href="https://www.aepd.es">Agencia Española de Protección de Datos</a>.
+</p>
+
+<h2>Cookies</h2>
+<p>
+  Este sitio web no instala cookies ni carga nada de terceros. El servicio Kairos instala dos
+  cookies estrictamente necesarias para los anfitriones —una mantiene la sesión iniciada y otra
+  protege el inicio de sesión con Google frente a falsificaciones— y guarda en tu navegador tu
+  preferencia de tema claro u oscuro. No hay cookies de analítica, publicidad ni seguimiento.
+</p>
+
+<h2>Seguridad</h2>
+<p>
+  El tráfico viaja cifrado por HTTPS. Los tokens de Google se guardan cifrados. Los enlaces de
+  reserva y de confirmación llevan identificadores aleatorios imposibles de adivinar y se eliminan
+  de los registros. Solo el responsable tiene acceso al servidor.
+</p>
+
+<h2>Menores</h2>
+<p>Kairos no está pensado para menores de 14 años y no recogemos sus datos a sabiendas.</p>
+
+<h2>Cambios</h2>
+<p>
+  Si esta política cambia en algo relevante, cambia la fecha de abajo y se avisa antes a los
+  anfitriones por correo. El historial de esta página es público en el
+  {' '}<a href="https://github.com/kairos-cal/kairos-cal.github.io">repositorio del sitio web</a>.
+</p>
