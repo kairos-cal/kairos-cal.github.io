@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import { t, localePath, operator, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  page: '' | 'privacy' | 'terms';
+  title?: string;
+  description?: string;
+}
+
+const { lang, page, title, description } = Astro.props;
+const s = t(lang);
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const fullTitle = title ? `${title} · Kairos` : `Kairos — ${s.tagline}`;
+const desc = description ?? s.description;
+const canonical = new URL(localePath(lang, page), Astro.site);
+// Search Console ownership for the OAuth brand verification; set as a repository variable.
+const siteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(localePath('en', page), Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(localePath('es', page), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localePath('en', page), Astro.site)} />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#b7532c" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kairos" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={new URL('/logo-square-512.png', Astro.site)} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'es_ES'} />
+    <meta name="twitter:card" content="summary" />
+
+    {siteVerification && <meta name="google-site-verification" content={siteVerification} />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <header class="border-b border-line">
+      <div class="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-4">
+        <a href={localePath(lang, '')} class="flex items-center gap-3 no-underline text-ink hover:text-ink">
+          <img src="/logo-mark.png" alt="" width="36" height="36" class="size-9" />
+          <span class="font-serif text-xl font-semibold">Kairos</span>
+        </a>
+        <nav class="flex items-center gap-5 text-sm" aria-label="Main">
+          <a href={localePath(lang, 'privacy')} class="hidden no-underline hover:underline sm:inline">{s.nav.privacy}</a>
+          <a href={localePath(lang, 'terms')} class="hidden no-underline hover:underline sm:inline">{s.nav.terms}</a>
+          <a href={localePath(other, page)} hreflang={other} lang={other} class="rounded-full border border-line px-3 py-1 no-underline hover:border-terra">
+            {s.otherLang}
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-line bg-surface">
+      <div class="mx-auto flex w-full max-w-5xl flex-col gap-3 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <p>{s.footer.operatedBy} {operator.name} · <a href={`mailto:${operator.email}`}>{operator.email}</a></p>
+        <p class="flex gap-5">
+          <a href={localePath(lang, 'privacy')}>{s.footer.privacy}</a>
+          <a href={localePath(lang, 'terms')}>{s.footer.terms}</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
