@@ -1,6 +1,6 @@
 # kairos-cal.github.io
 
-The public website of [Kairos](https://kairos-cal.github.io): the landing page and the privacy
+The public website of [Kairos](https://kairos-cal.coding-pit.com): the landing page and the privacy
 policy and terms of service that Google's OAuth consent screen links to. English at `/`, Spanish
 at `/es/`.
 
@@ -45,9 +45,19 @@ npm run icons    # uv run --with pillow python3 scripts/make-icons.py public
 
 `public/consent-logo-120.png` is the 120×120 file uploaded to Google's consent screen.
 
+## Domain
+
+Served by GitHub Pages at **https://kairos-cal.coding-pit.com** (custom domain; `kairos-cal.github.io`
+redirects to it). Google's OAuth brand verification requires a homepage on a domain we own, which
+`github.io` is not. DNS lives at Nominalia: `CNAME kairos-cal -> kairos-cal.github.io.` plus GitHub's
+`_github-pages-challenge-kairos-cal.kairos-cal` TXT, which proves the domain to the `kairos-cal`
+organisation so nobody else can claim it. The domain moves again when `coding-pit.com` is scrubbed
+before the code goes public (juanjecilla/kairos#47).
+
 ## Google Search Console
 
-Brand verification needs this site's ownership proven. Put the token from Search Console's
-*HTML tag* method in the repository variable `GOOGLE_SITE_VERIFICATION`
-(Settings → Secrets and variables → Actions → Variables) and re-run the deploy; the layout
-renders the `<meta name="google-site-verification">` tag only when it is set.
+Ownership is proven by the `coding-pit.com` **Domain** property (DNS TXT, already in place), which
+covers every subdomain, so no meta tag is needed. `PUBLIC_GOOGLE_SITE_VERIFICATION` is kept as an
+optional fallback: put a token from Search Console's *HTML tag* method in the repository variable
+`GOOGLE_SITE_VERIFICATION` and re-run the deploy; the layout renders the
+`<meta name="google-site-verification">` tag only when it is set.
