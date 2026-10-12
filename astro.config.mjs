@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://kairos-cal.github.io',
+  site: 'https://kairos-cal.coding-pit.com',
   output: 'static',
   trailingSlash: 'always',
   i18n: {
